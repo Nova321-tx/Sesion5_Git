@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte Individual</title>
+</head>
+<body>
+  <h1>📄 Reporte Individual</h1>
+
+  <label for="estudiante">Selecciona un estudiante:</label>
+  <select id="estudiante">
+    <option value="">-- Elige uno --</option>
+  </select>
+
+  <button onclick="verReporte()">Ver Reporte</button>
+  <button onclick="generarPDF()">📄 Descargar PDF</button>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Curso</th>
+        <th>Docente</th>
+        <th>Fecha</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody id="tablaIndividual"></tbody>
+  </table>
+
+  <script>
+    let idEstudianteSeleccionado = '';
+
+    // Cargar lista de estudiantes
+    fetch("obtener_lista_estudiantes.php")
+      .then(res => res.json())
+      .then(data => {
+        const select = document.getElementById("estudiante");
+        data.forEach(est => {
+          const opt = document.createElement("option");
+          opt.value = est.id_estudiante;
+          opt.text = est.nombre;
+          select.appendChild(opt);
+        });
+      });
+
+    function verReporte() {
+      const id = document.getElementById("estudiante").value;
+      idEstudianteSeleccionado = id;
+
+      fetch(`obtener_reporte_individual.php?id=${id}`)
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.getElementById("tablaIndividual");
+          tbody.innerHTML = "";
+          data.forEach(r => {
+            tbody.innerHTML += `
+              <tr>
+                <td>${r.nombre}</td>
+                <td>${r.curso}</td>
+                <td>${r.nombre_docente}</td>
+                <td>${r.fecha}</td>
+                <td>${r.descripcion}</td>
+              </tr>`;
+          });
+        });
+    }
+
+    function generarPDF() {
+      if (!idEstudianteSeleccionado) {
+        alert("Primero selecciona un estudiante.");
+        return;
+      }
+      window.open(`pdf_reporte_individual.php?id=${idEstudianteSeleccionado}`, "_blank");
+    }
+  </script>
+</body>
+</html>

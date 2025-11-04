@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de contacto</title>
+</head>
+<body>
+    <h1>Formulario</h1>
+    <form method="POST" action="procesar.php">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required><br><br>
+
+        <label>Apellido:</label>
+        <input type="text" name="apellido" required><br><br>
+
+        <label>Correo:</label>
+        <input type="email" name="correo" required><br><br>
+
+        <label>Mensaje:</label><br>
+        <textarea name="mensaje" rows="4" cols="40"></textarea><br><br>
+
+        <h2>Formulario de Preferencias:</h2><br>
+
+        <label>Género:</label><br>
+        <input type="radio" name="genero" value="Masculino"> Masculino<br>
+        <input type="radio" name="genero" value="Femenino"> Femenino<br><br>
+
+        <label>Lenguajes que conoces:</label><br>
+        <input type="checkbox" name="lenguajes[]" value="HTML"> HTML<br>
+        <input type="checkbox" name="lenguajes[]" value="CSS"> CSS<br>
+        <input type="checkbox" name="lenguajes[]" value="PHP"> PHP<br><br>
+
+        <label>País:</label><br>
+        <select name="pais">
+            <option value="">---Seleccione un Pais---</option>>
+            <option value="Bolivia">Bolivia</option>
+            <option value="México">México</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Perú">Perú</option>
+        </select><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

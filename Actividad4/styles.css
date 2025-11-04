@@ -1,0 +1,126 @@
+/* === Fondo general === */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0d4468, #66799e);
+  margin: 0;
+  padding: 0;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+}
+
+/* === Contenedor principal === */
+.container {
+  width: 90%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+/* === Título === */
+h1 {
+  text-align: center;
+  color: #0b3954;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+/* === Formulario === */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+}
+
+.formulario input,
+.formulario textarea {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  border-color: #0b3954;
+  box-shadow: 0 0 4px #93c5fd;
+  outline: none;
+}
+
+.formulario button {
+  background: #0b3954;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.formulario button:hover {
+  background: #0a2f46;
+  transform: scale(1.03);
+}
+
+/* === Mensajes de validación === */
+.mensaje {
+  text-align: center;
+  margin-top: 12px;
+  font-weight: bold;
+  color: #dc2626;
+}
+
+/* === Sección de comentarios === */
+.comentarios {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* === Tarjeta de comentario === */
+.comentario {
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  color: #111827;
+  animation: fadeIn 0.4s ease-in;
+  word-wrap: break-word;
+}
+
+/* === Colores alternos usando tonos de #0b3954 === */
+.comentario:nth-child(4n+1) { background: #e6f0fa; } /* azul muy claro */
+.comentario:nth-child(4n+2) { background: #d0e4f7; } /* azul claro */
+.comentario:nth-child(4n+3) { background: #b8d8f2; } /* azul medio */
+.comentario:nth-child(4n+4) { background: #9fccec; } /* azul más intenso */
+
+.comentario strong {
+  color: #0b3954;
+  font-size: 1.1em;
+}
+
+.comentario small {
+  color: #4b5563;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* === Animación === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

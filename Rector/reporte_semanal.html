@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte Semanal</title>
+</head>
+<body>
+  <h1>📋 Reporte Semanal</h1>
+
+  <form id="formFechas">
+    Desde: <input type="date" name="desde" required>
+    Hasta: <input type="date" name="hasta" required>
+    <button type="submit">Generar</button>
+  </form>
+
+  <br>
+  <button onclick="generarPDF()">📄 Descargar PDF</button>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Estudiante</th>
+        <th>Curso</th>
+        <th>Docente</th>
+        <th>Fecha de Registro</th>
+      </tr>
+    </thead>
+    <tbody id="tablaSemanal"></tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById("formFechas");
+    let ultimoDesde = '';
+    let ultimoHasta = '';
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const datos = new FormData(form);
+      ultimoDesde = datos.get("desde");
+      ultimoHasta = datos.get("hasta");
+
+      fetch("obtener_reporte_semanal.php", {
+        method: "POST",
+        body: datos
+      })
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById("tablaSemanal");
+        tbody.innerHTML = "";
+        data.forEach(r => {
+          tbody.innerHTML += `
+            <tr>
+              <td>${r.nombre}</td>
+              <td>${r.curso}</td>
+              <td>${r.nombre_docente}</td>
+              <td>${r.fecha_registro}</td>
+            </tr>`;
+        });
+      });
+    });
+
+    function generarPDF() {
+      if (!ultimoDesde || !ultimoHasta) {
+        alert("Primero genera un reporte con un rango de fechas.");
+        return;
+      }
+      window.open(`pdf_reporte_semanal.php?desde=${ultimoDesde}&hasta=${ultimoHasta}`, "_blank");
+    }
+  </script>
+</body>
+</html>

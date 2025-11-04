@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Estudiantes</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Estudiantes Registrados</h1>
+  <a href="estudiantes_crear.html">➕ Registrar Estudiante</a>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Curso</th>
+        <th>Docente</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaEstudiantes"></tbody>
+  </table>
+
+  <script>
+    fetch('listar_estudiantes.php')
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById("tablaEstudiantes");
+        data.forEach(est => {
+          const fila = `
+            <tr>
+              <td>${est.nombre}</td>
+              <td>${est.curso}</td>
+              <td>${est.nombre_docente}</td>
+              <td>
+                <a href="estudiantes_editar.html?id=${est.id_estudiante}&nombre=${encodeURIComponent(est.nombre)}&curso=${encodeURIComponent(est.curso)}&id_docente=${est.id_docente}">✏️ Editar</a> |
+                <a href="eliminar_estudiantes.php?id=${est.id_estudiante}" onclick="return confirm('¿Eliminar este estudiante?');">🗑️ Eliminar</a> |
+                <a href="ver_avances.html?id_estudiante=${est.id_estudiante}&nombre=${encodeURIComponent(est.nombre)}">📘 Ver Avances</a>
+              </td>
+            </tr>`;
+          tbody.innerHTML += fila;
+        });
+      })
+      .catch(error => {
+        alert("Error al cargar los estudiantes.");
+        console.error(error);
+      });
+  </script>
+</body>
+</html>

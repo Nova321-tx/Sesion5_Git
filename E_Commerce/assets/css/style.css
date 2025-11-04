@@ -1,0 +1,259 @@
+/* ========== GENERAL ========== */
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f8fa;
+  color: #0b3954;
+}
+
+/* ========== HEADER ========== */
+header {
+  background: #0b3954;
+  color: #ffffff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+nav a {
+  color: #ffffff;
+  margin-left: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #bfd7ea;
+}
+
+/* ========== CONTENEDOR PRINCIPAL ========== */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px auto;
+}
+
+/* ========== TARJETAS DE PRODUCTO ========== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 10px;
+  height: 190px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 10px 0;
+  color: #0b3954;
+}
+
+.card button {
+  background: #0b3954;
+  color: white;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card button:hover {
+  background: #094066;
+}
+
+/* ========== CARRITO ========== */
+.cart {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.cart h2 {
+  color: #0b3954;
+  border-bottom: 2px solid #bfd7ea;
+  padding-bottom: 8px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e1dd;
+}
+
+.cart-item:last-child {
+  border: none;
+}
+
+button.checkout {
+  margin-top: 20px;
+  background: #2ecc71;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button.checkout:hover {
+  background: #27ae60;
+}
+
+/* ========== FORMULARIOS ========== */
+form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 420px;
+  margin: 30px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+form h2 {
+  color: #0b3954;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #bfd7ea;
+  font-size: 0.95rem;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #0b3954;
+  box-shadow: 0 0 5px rgba(11,57,84,0.3);
+}
+
+form button {
+  width: 100%;
+  background: #0b3954;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #094066;
+}
+
+/* ========== MENSAJES ========== */
+.alert-success {
+  background: #2ecc71;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.alert-error {
+  background: #e74c3c;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  padding: 12px;
+  background: #0b3954;
+  color: white;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+/* 📱 Ajustes generales para móviles */
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px; /* tamaño base */
+  line-height: 1.6;
+  padding: 10px;
+  color: #0b3954;
+}
+
+/* 🔠 Aumentar fuentes globalmente */
+* {
+  font-size: 1.05em; /* escala leve de texto */
+}
+
+/* 🧱 Para títulos */
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+/* 🔳 Botones más grandes */
+button, input, select {
+  font-size: 1.1rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+/* 🧭 Adaptar a pantallas pequeñas */
+@media (max-width: 600px) {
+  body {
+    font-size: 18px; /* más grande en celulares */
+  }
+
+  button, input, select {
+    font-size: 1.2rem;
+    padding: 12px 16px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+}

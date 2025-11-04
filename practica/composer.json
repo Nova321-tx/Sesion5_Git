@@ -1,0 +1,7 @@
+{
+  "name": "lenovo/practica",
+  "description": "Proyecto reporte de ventas TechMarket",
+  "require": {
+    "dompdf/dompdf": "^3.1"
+  }
+}

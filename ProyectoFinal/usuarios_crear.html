@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Crear Nuevo Usuario</h1>
+    <form method="POST" action="crear_usuario.php">
+        <label>Nombre:</label><br>
+        <input type="text" name="nombre" required><br>
+        <label>Correo:</label><br>
+        <input type="email" name="correo" required><br>
+        <label>Contraseña:</label><br>
+        <input type="password" name="contraseña" required><br>
+        <label>Rol:</label><br>
+        <select name="id_rol" required>
+            <option value="1">Administrador</option>
+            <option value="2">Docente</option>
+            <option value="3">Rector</option>
+        </select><br><br>
+        <button type="submit">Crear</button>
+    </form>
+    <a href="usuarios_listar.html">⬅️ Volver</a>
+</body>
+</html>

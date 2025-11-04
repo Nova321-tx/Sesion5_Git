@@ -1,0 +1,160 @@
+/* 🎨 Estilo general */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: #f4f7fc;
+    color: #2c3e50;
+}
+
+/* 🧭 Encabezado */
+header {
+    background: linear-gradient(90deg, #0a3d62, #2980b9);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* 📋 Contenido principal */
+main {
+    padding: 30px;
+    min-height: 70vh;
+}
+
+/* 📘 Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    border: none;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #2980b9;
+    color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+    background: #f2f6fa;
+}
+
+tr:hover {
+    background: #d6eaf8;
+}
+
+/* 🔘 Botones y enlaces de acción */
+a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 🧾 Formularios */
+form {
+    background: white;
+    max-width: 400px;
+    margin: 40px auto; /* centra horizontalmente */
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+form h2 {
+    text-align: center;
+    color: #0a3d62;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: #2980b9;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #1f5f8b;
+}
+
+/* ✅ Mensajes */
+.success {
+    color: #2ecc71;
+    font-weight: bold;
+    text-align: center;
+}
+
+.error {
+    color: #e74c3c;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 📘 Pie de página */
+footer {
+    text-align: center;
+    background: #0a3d62;
+    color: white;
+    padding: 12px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}

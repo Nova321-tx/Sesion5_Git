@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Avance</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Registrar Avance Académico</h1>
+  <form method="POST" action="registrar_avance.php">
+    <input type="hidden" name="id_estudiante" id="id_estudiante">
+    <p>Estudiante: <strong id="nombre"></strong></p>
+    Descripción del avance:<br>
+    <textarea name="descripcion" rows="4" required></textarea><br>
+    Fecha: <input type="date" name="fecha" required><br>
+    <button type="submit">Registrar Avance</button>
+  </form>
+  <a href="estudiantes_listar.html">⬅️ Volver</a>
+
+  <script>
+  const p = new URLSearchParams(location.search);
+  document.getElementById("id_estudiante").value = p.get("id");
+  document.getElementById("nombre").textContent = p.get("nombre");
+  </script>
+</body>
+</html>

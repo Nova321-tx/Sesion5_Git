@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Estudiante</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Editar Estudiante</h1>
+
+  <form method="POST" action="editar_estudiantes.php">
+    <input type="hidden" name="id_estudiante" id="id_estudiante">
+
+    Nombre:<br>
+    <input type="text" name="nombre" id="nombre" required><br>
+
+    Curso:<br>
+    <input type="text" name="curso" id="curso" required><br>
+
+    Docente asignado:<br>
+    <select name="id_docente" id="id_docente" required>
+      <option value="">Cargando docentes...</option>
+    </select><br>
+
+    <button type="submit">Guardar Cambios</button>
+  </form>
+
+  <a href="estudiantes_listar.html">⬅️ Volver</a>
+
+  <script>
+    // Capturar parámetros de URL
+    const p = new URLSearchParams(window.location.search);
+    const id_estudiante = p.get("id");
+    const nombre = p.get("nombre");
+    const curso = p.get("curso");
+    const id_docente_actual = p.get("id_docente");
+
+    // Asignar valores actuales
+    document.getElementById("id_estudiante").value = id_estudiante;
+    document.getElementById("nombre").value = nombre;
+    document.getElementById("curso").value = curso;
+
+    // Cargar lista de docentes
+    fetch('obtener_docente.php')
+      .then(res => res.json())
+      .then(data => {
+        const select = document.getElementById('id_docente');
+        select.innerHTML = ''; // Limpiar opciones previas
+
+        data.forEach(docente => {
+          const option = document.createElement('option');
+          option.value = docente.id_usuario;
+          option.text = docente.nombre;
+          if (docente.id_usuario === id_docente_actual) {
+            option.selected = true;
+          }
+          select.appendChild(option);
+        });
+      })
+      .catch(() => {
+        alert("No se pudieron cargar los docentes.");
+      });
+  </script>
+</body>
+</html>

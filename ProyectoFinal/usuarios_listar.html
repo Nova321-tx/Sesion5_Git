@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Gestión de Usuarios</h1>
+    <a href="usuarios_crear.html">➕ Nuevo Usuario</a>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tablaUsuarios"></tbody>
+    </table>
+
+    <script>
+    fetch('listar_usuarios.php')
+        .then(res => res.json())
+        .then(data => {
+            const tbody = document.getElementById("tablaUsuarios");
+            data.forEach(usuario => {
+                const fila = `<tr>
+                    <td>${usuario.nombre}</td>
+                    <td>${usuario.correo}</td>
+                    <td>${usuario.nombre_rol}</td>
+                    <td>
+                        <a href="usuarios_editar.html?id=${usuario.id_usuario}&nombre=${encodeURIComponent(usuario.nombre)}&correo=${encodeURIComponent(usuario.correo)}&id_rol=${usuario.id_rol}">✏️ Editar</a> |
+                        <a href="eliminar_usuario.php?id=${usuario.id_usuario}" onclick="return confirm('¿Eliminar este usuario?');">🗑️ Eliminar</a>
+                    </td>
+                </tr>`;
+                tbody.innerHTML += fila;
+            });
+        });
+    </script>
+</body>
+</html>

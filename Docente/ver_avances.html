@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Avances del Estudiante</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <h1>Avances del Estudiante</h1>
+  <h2 id="nombreEstudiante"></h2>
+
+  <!-- Tabla de avances -->
+  <table border="1" cellpadding="10" id="tablaAvances">
+    <thead>
+      <tr>
+        <th>Descripción</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h3>Registrar nuevo avance</h3>
+  <form id="formAvance">
+    <input type="hidden" name="id_estudiante" id="id_estudiante" />
+    <label for="descripcion">Descripción:</label><br />
+    <textarea name="descripcion" id="descripcion" rows="3" required></textarea><br /><br />
+    <label for="fecha">Fecha:</label><br />
+    <input type="date" name="fecha" id="fecha" required /><br /><br />
+    <button type="submit">Guardar Avance</button>
+  </form>
+
+  <br />
+  <a href="estudiantes_listar.html">⬅️ Volver a Estudiantes</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id_estudiante = params.get('id_estudiante');
+    const nombre = params.get('nombre');
+
+    if (!id_estudiante) {
+      alert('No se especificó un estudiante.');
+      window.location.href = 'estudiantes_listar.html';
+    } else {
+      document.getElementById('nombreEstudiante').textContent = nombre || 'Estudiante';
+
+      document.getElementById('id_estudiante').value = id_estudiante;
+
+      // Función para cargar avances
+      function cargarAvances() {
+        fetch(`obtener_avances.php?id_estudiante=${id_estudiante}`)
+          .then(res => res.json())
+          .then(data => {
+            const tbody = document.querySelector('#tablaAvances tbody');
+            tbody.innerHTML = '';
+            if (data.length === 0) {
+              tbody.innerHTML = '<tr><td colspan="2">No hay avances registrados</td></tr>';
+            } else {
+              data.forEach(avance => {
+                const fila = `<tr>
+                  <td>${avance.descripcion}</td>
+                  <td>${avance.fecha}</td>
+                </tr>`;
+                tbody.innerHTML += fila;
+              });
+            }
+          });
+      }
+
+      cargarAvances();
+
+      // Manejo del envío del formulario
+      document.getElementById('formAvance').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        fetch('registrar_avance.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.text())
+        .then(resp => {
+          alert('Avance registrado correctamente');
+          this.reset();
+          cargarAvances();
+        })
+        .catch(err => {
+          alert('Error al registrar avance');
+          console.error(err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

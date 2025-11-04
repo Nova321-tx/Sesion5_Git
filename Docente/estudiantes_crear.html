@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Estudiante</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Registrar Estudiante</h1>
+
+  <form method="POST" action="crear_estudiante.php">
+    <label for="nombre">Nombre del estudiante:</label><br>
+    <input type="text" name="nombre" id="nombre" required><br><br>
+
+    <label for="curso">Curso:</label><br>
+    <input type="text" name="curso" id="curso" required><br><br>
+
+    <label for="id_docente">Docente que lo registra:</label><br>
+    <select name="id_docente" id="id_docente" required>
+      <option value="" disabled selected>Seleccione un docente</option>
+    </select><br><br>
+
+    <button type="submit">Registrar</button>
+  </form>
+
+  <a href="estudiantes_listar.html">⬅️ Volver</a>
+
+  <script>
+    fetch('obtener_docente.php')
+      .then(res => {
+        if (!res.ok) throw new Error('Error al cargar los docentes');
+        return res.json();
+      })
+      .then(data => {
+        const select = document.getElementById('id_docente');
+        data.forEach(docente => {
+          const option = document.createElement('option');
+          option.value = docente.id_usuario;
+          option.text = docente.nombre;
+          select.appendChild(option);
+        });
+      })
+      .catch(error => {
+        alert("No se pudieron cargar los docentes. Intenta nuevamente.");
+        console.error(error);
+      });
+  </script>
+</body>
+</html>

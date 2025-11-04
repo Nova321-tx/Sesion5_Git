@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario HTML</title>
+</head>
+<body>
+  <h2>Formulario de Registro</h2>
+  <form action="proceso.php" method="POST">
+    <label>Nombre completo: <input type="text" name="nombreCompleto" required></label><br><br>
+
+    <label>Edad: <input type="number" name="edad" required></label><br><br>
+
+    <label>Género:</label><br>
+    <input type="radio" name="genero" value="Masculino" required> Masculino<br>
+    <input type="radio" name="genero" value="Femenino"> Femenino<br>
+    <input type="radio" name="genero" value="Otro"> Otro<br><br>
+
+    <label>Lenguajes de programación que conoce:</label><br>
+    <input type="checkbox" name="lenguajes[]" value="PHP"> PHP<br>
+    <input type="checkbox" name="lenguajes[]" value="Python"> Python<br>
+    <input type="checkbox" name="lenguajes[]" value="JavaScript"> JavaScript<br>
+    <input type="checkbox" name="lenguajes[]" value="C#"> C#<br><br>
+
+    <label>Pais donde reside:
+      <select name="pais">
+        <option value="">Seleccione un pais</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Brasil">Brasil</option>
+        <option value="Bolivia">Bolivia</option>
+        <option value="Mexico">Mexico</option>
+        <option value="Ecuador">Ecuador</option>
+      </select>
+    </label><br><br>
+
+    <input type="submit" value="Enviar">
+  </form>
+</body>
+</html>

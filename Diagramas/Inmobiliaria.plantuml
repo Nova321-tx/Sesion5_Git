@@ -1,0 +1,140 @@
+@startuml
+left to right direction
+
+' --- Calidad visual ---
+skinparam dpi 300
+skinparam defaultFontName Arial
+skinparam defaultFontSize 18
+skinparam actorStyle awesome
+
+skinparam usecase {
+  BackgroundColor #E8F4FF
+  BorderColor #003366
+  ArrowColor #003366
+  FontSize 16
+  RoundCorner 8
+  Padding 10
+}
+
+' --- Actores ---
+actor "Administrador" as Admin
+actor "Agente Inmobiliario" as Agente
+actor "Cliente" as Cliente
+actor "Propietario" as Prop
+actor "Supervisor Inmobiliario" as Sup
+
+' --- Casos de uso dentro del sistema ---
+rectangle "Sistema Inmobiliario" {
+
+  ' --- Administrador ---
+  usecase U1  as "Configurar parámetros\ndel sistema"
+  usecase U2  as "Gestionar usuarios"
+  usecase U2a as "Registrar usuario"
+  usecase U2b as "Editar usuario"
+  usecase U2c as "Eliminar usuario"
+  usecase U3  as "Generar reportes\nadministrativos"
+
+  ' --- Agente ---
+  usecase U5  as "Gestionar propiedades"
+  usecase U6  as "Publicar propiedades"
+  usecase U9  as "Preparar contratos"
+  usecase U4  as "Validar pago"
+  usecase U7  as "Gestionar clientes"
+  usecase U8  as "Agendar visitas"
+  usecase U24 as "Atender consultas\nde clientes"
+
+  ' --- Cliente ---
+  usecase U15 as "Buscar propiedades"
+  usecase U10 as "Ver detalles"
+  usecase U11 as "Contactar agente"
+  usecase U12 as "Realizar reserva"
+  usecase U14 as "Realizar pago"
+  usecase U13 as "Acceder historial"
+  usecase U25 as "Crear cuenta"
+  usecase U26 as "Editar perfil"
+  usecase U27 as "Gestionar favoritos"
+  usecase U28 as "Calificar agente o propiedad"
+  usecase U29 as "Recibir notificaciones"
+  usecase U30 as "Solicitar tour virtual"
+  usecase U31 as "Descargar documentos\n(contratos, recibos)"
+
+  ' --- Propietario ---
+  usecase U16 as "Administrar propiedades\npropias"
+  usecase U17 as "Proporcionar documentación"
+  usecase U18 as "Autorizar publicación"
+  usecase U32 as "Consultar estado\nde contratos"
+  usecase U33 as "Solicitar reportes\nde visitas"
+
+  ' --- Supervisor ---
+  usecase U19 as "Supervisar agentes\ny reportes"
+  usecase U20 as "Revisar contratos"
+  usecase U21 as "Asignar agente\ninmobiliario"
+  usecase U22 as "Aprobar publicaciones"
+  usecase U23 as "Monitorear actividad"
+  usecase U34 as "Auditar operaciones"
+}
+
+' ----------------------------
+' Relaciones INCLUDE / EXTEND
+' ----------------------------
+
+' Gestión de usuarios (Administrador)
+U2 --> U2a : <<include>>
+U2 --> U2b : <<include>>
+U2 --> U2c : <<include>>
+
+' Gestión de propiedades (Agente)
+U5 --> U6  : <<include>>
+U5 --> U9  : <<include>>
+U5 --> U8  : <<include>>
+U5 ..> U4  : <<extend>>
+
+' Gestión de clientes (Agente)
+U7 --> U4  : <<include>>
+U7 --> U24 : <<include>>
+
+' Cliente (flujo completo)
+U15 --> U10 : <<include>>
+U15 --> U11 : <<include>>
+U15 --> U12 : <<include>>
+U15 --> U27 : <<include>>
+U12 ..> U14 : <<extend>>
+U12 ..> U30 : <<extend>>  ' Opcional: tour virtual
+U11 ..> U28 : <<extend>>  ' El cliente puede calificar después de contactar
+U13 --> U31 : <<include>> ' Historial incluye descarga de documentos
+U25 --> U26 : <<include>> ' Crear cuenta incluye editar perfil
+U29 ..> U27 : <<extend>>  ' Notificaciones pueden relacionarse con favoritos
+
+' Propietario
+U16 --> U17 : <<include>>
+U16 ..> U18 : <<extend>>
+U16 ..> U32 : <<extend>>
+U16 ..> U33 : <<extend>>
+
+' Supervisor
+U19 --> U20 : <<include>>
+U19 --> U21 : <<include>>
+U19 --> U22 : <<include>>
+U19 ..> U23 : <<extend>>
+U19 ..> U34 : <<extend>>
+
+' ----------------------------
+' Conexiones principales
+' ----------------------------
+Admin  --> U1
+Admin  --> U2
+Admin  --> U3
+
+Agente --> U5
+Agente --> U7
+
+Cliente --> U15
+Cliente --> U13
+Cliente --> U25
+Cliente --> U29
+
+Prop   --> U16
+
+Sup    --> U19
+
+@enduml

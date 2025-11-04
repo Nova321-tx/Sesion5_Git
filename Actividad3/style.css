@@ -1,0 +1,192 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Menú lateral */
+.sidebar {
+  width: 220px;
+  background: #0b3954;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  height: 100%;
+}
+
+.sidebar h2 { font-size: 1.2rem; margin-bottom: 1rem; }
+.sidebar nav { display: flex; flex-direction: column; }
+.sidebar nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+.sidebar nav a:hover, .sidebar nav a.active { background: #0056b3; }
+
+/* Contenido principal */
+.main-content { margin-left: 240px; padding: 30px; flex: 1; }
+header h1 { margin-top: 0; color: #333; }
+
+/* Dashboard */
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+.stats {
+  display: flex;
+  flex-direction: column; /* Las tarjetas en columna */
+  gap: 20px;
+  flex: 1;
+}
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.card h3 { margin: 0; font-size: 2rem; color: #0b3954; }
+.chart-container {
+  width: 400px; /* ancho fijo del gráfico */
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+th { background: #0b3954; color: white; }
+
+/* Botones */
+.btn, button {
+  background: #0b3954;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover, button:hover { background: #0b3954; }
+
+/* Formularios */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.form label { font-weight: bold; }
+.form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+
+/* ===== ESTILOS EXCLUSIVOS PARA registrar.php ===== */
+.registro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente */
+  align-items: center;     /* centra horizontalmente */
+  min-height: calc(100vh - 40px); /* altura completa menos margen */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.registro-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.registro-form {
+  width: 80%;       /* ocupa todo el ancho disponible */
+  max-width: none;  /* ajusta este valor al ancho máximo que quieras */
+  min-width: 300px;  /* opcional: evita que sea demasiado estrecho en móviles */
+  padding: 40px 60px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  margin: 0 auto;    /* centra horizontalmente */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.registro-form label {
+  font-weight: bold;
+  color: #444;
+  font-size: 1rem;
+}
+
+.registro-form input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+.registro-form input:focus {
+  border-color: #0b3954;
+  outline: none;
+}
+
+.registro-form .btn {
+  background: #0b3954;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.registro-form .btn:hover {
+  background: #0b3954;
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .registro-form {
+    padding: 25px 30px;
+    max-width: 90%;
+  }
+
+  .registro-container h1 {
+    font-size: 1.5rem;
+  }
+}

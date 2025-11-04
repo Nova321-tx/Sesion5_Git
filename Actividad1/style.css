@@ -1,0 +1,150 @@
+/* Paleta azul moderna */
+:root {
+    --azul-oscuro: #0D47A1;
+    --azul-medio: #1976D2;
+    --azul-claro: #E3F2FD;
+    --blanco: #FFFFFF;
+    --gris: #f4f6f9;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--gris);
+    color: #333;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background: var(--azul-medio);
+}
+
+/* Contenido principal */
+.main {
+    margin-left: 240px;
+    padding: 30px;
+    width: calc(100% - 240px);
+    background: var(--blanco);
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+h1 {
+    color: var(--azul-oscuro);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h3 {
+    color: var(--azul-medio);
+    margin-bottom: 10px;
+}
+
+.mensaje {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    background: var(--azul-claro);
+    color: var(--azul-oscuro);
+}
+
+/* Formularios */
+.formulario {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: var(--gris);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 95%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: var(--azul-medio);
+    color: var(--blanco);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: var(--azul-oscuro);
+}
+
+/* Tabla */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--azul-medio);
+    color: var(--blanco);
+}
+
+tr:nth-child(even) {
+    background-color: var(--azul-claro);
+}
